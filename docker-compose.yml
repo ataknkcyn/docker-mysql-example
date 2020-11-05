@@ -1,0 +1,24 @@
+version: '2'
+services:
+  demo-mysql:
+    image: mysql:5.7.18
+    environment:
+      - MYSQL_USER=demo
+      - MYSQL_PASSWORD=123
+      - MYSQL_DATABASE=Deneme
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    ports:
+      - 3306:3306
+  deneme-spring:
+    image: deneme-spring
+    restart: on-failure
+    depends_on:
+      - demo-mysql
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_HOST=demo-mysql
+      - DATABASE_USER=demo
+      - DATABASE_PASSWORD=123
+      - DATABASE_NAME=Deneme
+      - DATABASE_PORT=3306

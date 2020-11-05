@@ -1,0 +1,11 @@
+version: '2'docker-mysql
+services:
+  demo-mysql:
+    image: mysql:5.7.18
+    environment:
+      - MYSQL_USER=demo
+      - MYSQL_PASSWORD=123
+      - MYSQL_DATABASE=Deneme
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    ports:
+      - 3306:3306
